@@ -26,7 +26,7 @@
 
 @section('content')
     <div class="row m-5">
-        <h1> L'employee <b> {{ $employee["name"] }}</b></h1>
+        <h1> L'employé <b> {{ $employee["name"] }}</b></h1>
         <div class="col-md-8">
             <table class="table table-striped table-bordered mt-3" >
                 <thead>
@@ -39,9 +39,9 @@
                     <th>Poste réaliser</th>
                     <th>Observation</th>
                   </tr>
-                </thead>
+                </thead> 
                   <tr class="text-center">
-                    <td><img src="{{ asset("https://img.freepik.com/vecteurs-libre/employe-du-mois-dans-cadre_23-2148462287.jpg") }}" width="30px" height="30px" class="text-center mx-auto"></td>
+                    <td><img src="{{ asset('./uploads/'.$employee->image) }}" width="40px" height="40px" class="text-center mx-auto"></td>
                     <td>{{ $employee["id"] }}</td>
                     <td> {{ $employee["matr"] }}</td>
                     <td>{{ $employee["name"] }}</td>

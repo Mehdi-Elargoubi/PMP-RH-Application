@@ -26,20 +26,26 @@
 
 @section('content')
     <div class="row m-5">
-        <h1> Liste des employees</h1>
-        <div class="col-md-8">
+        <div class=" mb-3">
+            <h1 class="text-center fs-2"> Liste des employés</h1>
+            <hr>
+        </div>
+        <div class="col-md-10 mx-auto">
 
-            @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                </div>
-            @endif
+            <div class="col-md-6 mx-auto">
+                @if(session()->has('success'))
+                    <div class="alert alert-success text-center fs-6">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+            </div>
+
 
 
             <table class="table table-striped table-bordered mt-3" >
                 <thead>
                   <tr class="text-center">
-                    {{-- <th>Photo</th> --}}
+                    <th>Photo</th> 
                     <th>ID</th>
                     <th>Matricule</th>
                     <th>Name</th>
@@ -51,9 +57,9 @@
                 </thead>
                 @foreach ($employees as $employee)
                   <tr class="text-center">
-                    {{-- <td><img src="{{ asset("https://img.freepik.com/vecteurs-libre/employe-du-mois-dans-cadre_23-2148462287.jpg") }}" width="30px" height="30px" class="text-center mx-auto"></td> --}}
+                    <td><img src="{{ asset('./uploads/'.$employee->image) }}" width="40px" height="40px" class="text-center mx-auto"></td>
                     <td>{{ $employee["id"] }}</td>
-                    <td> {{ $employee["matr"] }}</td>
+                    <td>{{ $employee["matr"] }}</td>
                     <td>{{ $employee["name"] }}</td>
                     <td>{{ $employee["jobP"] }}</td>
                     <td>{{ $employee["jobR"] }}</td>
@@ -67,7 +73,7 @@
                         </form>
                         <button 
                             onclick="event.preventDefault();
-                            if(confirm('Voulez-vous supprimer cet employee ?'))
+                            if(confirm('Souhaitez-vous supprimer cet employé ?'))
                             document.getElementById('{{ $employee->id }}').submit();" 
                         class="btn btn-danger">
                             Supprimer

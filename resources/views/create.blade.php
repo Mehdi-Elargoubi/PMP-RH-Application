@@ -22,7 +22,7 @@
                 <div class="card-body">
                   <h1 class="card-title text-center"><b>Ajouter un employee</b></h1>
                     <div class="card-body">
-                        <form action="{{ route('employee.store') }}" method="post">
+                        <form action="{{ route('employee.store') }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nom Complet</label>
@@ -49,6 +49,11 @@
                               <div class="mb-3">
                                 <label for="exampleFormControlInput6" class="form-label">Equipe</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput6" name="equipe" >
+                              </div>                              
+                              
+                              <div class="mb-3">
+                                <label for="formFile" class="form-label">Image</label>
+                                <input class="form-control" type="file" id="image" name="image">
                               </div>
 
                               <div class="mb-3 d-flex justify-content-center">
