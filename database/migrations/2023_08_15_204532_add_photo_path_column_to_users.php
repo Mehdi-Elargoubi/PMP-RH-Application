@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('profile_photo_path');
+            //$table->string('profile_photo_path');
 
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('profile_photo_path');
+           // $table->dropColumn('profile_photo_path');
         });
     }
 };

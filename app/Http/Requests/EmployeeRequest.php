@@ -25,8 +25,8 @@ class EmployeeRequest extends FormRequest
             //
             'name'=>'required',
             'matr'=> $this->route('id') ? 'required': 'required|unique:employees',
-            // 'image'=> $this->route('id') ? 'image|mimes:png,jpg,jpeg|max:4096' : 'image|mimes:png,jpg,jpeg|max:4096',
-            'image'=> 'nullable|image|mimes:png,jpg,jpeg|max:4096',
+            //'image'=> $this->route('id') ? 'image|mimes:png,jpg,jpeg|max:4096' : 'image|mimes:png,jpg,jpeg|max:4096',
+            //'image'=> 'nullable|image|mimes:png,jpg,jpeg|max:4096',
 
         ];
     }

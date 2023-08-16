@@ -33,7 +33,7 @@
                                 <input type="number" class="form-control" id="exampleFormControlInput2" name="matr" placeholder="Saisir le Matricule d'employee">
                               </div>
                               <div class="mb-3">
-                                <label for="exampleFormControlInput3" class="form-label">Pozte Prévu</label>
+                                <label for="exampleFormControlInput3" class="form-label">Poste Prévu</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput3" name="jobP" >
                               </div>
                               <div class="mb-3">
@@ -53,7 +53,7 @@
                               
                               <div class="mb-3">
                                 <label for="formFile" class="form-label">Image</label>
-                                <input class="form-control" type="file" id="image" name="image">
+                                <input class="form-control" type="file" id="image" name="image" nullable>
                               </div>
 
                               <div class="mb-3 d-flex justify-content-center">

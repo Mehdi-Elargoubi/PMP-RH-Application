@@ -55,7 +55,7 @@
                               
                               <div class="mb-3">
                                 <label for="formFile" class="form-label">Image</label>
-                                <input class="form-control" type="file" id="image" name="image">
+                                <input class="form-control" type="file" id="image" name="image" value="{{ $employee->image }}">
                               </div>
 
                               <div class="mb-3 d-flex justify-content-center">

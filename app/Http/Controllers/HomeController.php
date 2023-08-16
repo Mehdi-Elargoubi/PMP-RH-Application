@@ -38,6 +38,9 @@ class HomeController extends Controller
             $image_name=time().'_'.$file->getClientOriginalName();
             $file->move(public_path('uploads'),$image_name);
         }
+        else{
+            $image_name='worker.png';
+        }
 
         
         Employee::create([
@@ -75,10 +78,14 @@ class HomeController extends Controller
         $file = $request->image;
         $image_name = time().'_'.$file->getClientOriginalName();
         $file->move(public_path('uploads'), $image_name);
-        unlink(public_path('uploads') .'/'. $employee->image);
+        //unlink(public_path('uploads') .'/'. $employee->image);
         $employee->image = $image_name;
+        //$employee->image = '/uploads/'.$image_name;
     }
-
+    else{
+        $image_name = $employee->image;
+    }
+    
     $employee->update([
         'name' => $request->name,
         'matr'=> $request->matr,
