@@ -72,11 +72,11 @@ class HomeController extends Controller
     $employee = Employee::find($id);
 
     if($request->has('image')){
-        $file=$request->image;
-        $image_name=time().'_'.$file->getClientOriginalName();
-        $file->move(public_path('uploads'),$image_name);
-        unlink(public_path('uploads/').$employee->image);
-        $employee->image=$image_name;
+        $file = $request->image;
+        $image_name = time().'_'.$file->getClientOriginalName();
+        $file->move(public_path('uploads'), $image_name);
+        unlink(public_path('uploads') .'/'. $employee->image);
+        $employee->image = $image_name;
     }
 
     $employee->update([
@@ -86,7 +86,7 @@ class HomeController extends Controller
         'jobR'=> $request->jobR,
         'observ'=> $request->observ,
         'equipe'=> $request->equipe,
-        'image'=> $employee->image,
+        'image'=> $image_name,
     ]);
 
     return redirect()->route('home')->with([
@@ -97,6 +97,7 @@ class HomeController extends Controller
 
     public function delete($id){
         $employee=Employee::find($id);
+        unlink(public_path('uploads') .'/'. $employee->image);
         $employee->delete();
         return redirect()->route('home')->with([
             'success' => 'Employé supprimé avec succès'

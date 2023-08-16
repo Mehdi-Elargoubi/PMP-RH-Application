@@ -41,7 +41,7 @@
                   </tr>
                 </thead> 
                   <tr class="text-center">
-                    <td><img src="{{ asset('./uploads/'.$employee->image) }}" width="40px" height="40px" class="text-center mx-auto"></td>
+                    <td><img src="{{ asset('./uploads/'.$employee->image) }}" alt="{{ $employee->name }}" width="40px" height="40px" class="text-center mx-auto"></td>
                     <td>{{ $employee["id"] }}</td>
                     <td> {{ $employee["matr"] }}</td>
                     <td>{{ $employee["name"] }}</td>

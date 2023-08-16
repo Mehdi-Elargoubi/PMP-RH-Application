@@ -33,11 +33,11 @@
                                 <input type="number" class="form-control" id="exampleFormControlInput2" name="matr" placeholder="Saisir le Matricule d'employee">
                               </div>
                               <div class="mb-3">
-                                <label for="exampleFormControlInput3" class="form-label">Travail Prévu</label>
+                                <label for="exampleFormControlInput3" class="form-label">Pozte Prévu</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput3" name="jobP" >
                               </div>
                               <div class="mb-3">
-                                <label for="exampleFormControlInput4" class="form-label">Travail Réaliser</label>
+                                <label for="exampleFormControlInput4" class="form-label">Poste Réaliser</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput4" name="jobR">
                               </div>
 

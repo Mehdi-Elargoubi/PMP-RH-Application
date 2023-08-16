@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('matr')->unique();
-            $table->string('jobP');
-            $table->string('jobR');
-            $table->string('observ');
-            $table->string('equipe');
-            $table->string('image');
+            $table->string('jobP')->nullable();;
+            $table->string('jobR')->nullable();;
+            $table->string('observ')->nullable();;
+            $table->string('equipe')->nullable();;
+            $table->string('image')->nullable();;
             $table->timestamps();
         });
     }

@@ -64,8 +64,8 @@
                     <td>{{ $employee["jobP"] }}</td>
                     <td>{{ $employee["jobR"] }}</td>
                     <td>{{ $employee["observ"] }}</td>
-                    <td><a href="{{ route('employee.show',$employee->id) }}" class="btn btn-primary">Voir</a></td>
-                    <td><a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-primary">Modifier</a></td>
+                    <td><a href="{{ route('employee.show',$employee->id) }}" class="btn btn-outline-info btn-sm">Voir</a></td>
+                    <td><a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-outline-warning btn-sm">Modifier</a></td>
                     <td>
                         <form id="{{ $employee->id }}" action="{{ route('employee.delete', $employee->id) }}" method="post">
                             @csrf
@@ -75,7 +75,7 @@
                             onclick="event.preventDefault();
                             if(confirm('Souhaitez-vous supprimer cet employé ?'))
                             document.getElementById('{{ $employee->id }}').submit();" 
-                        class="btn btn-danger">
+                            type="button" class="btn btn-outline-danger btn-sm">
                             Supprimer
                         </button>
                     </td>

@@ -24,3 +24,24 @@ Route::post('/add/employee', 'HomeController@store')->name('employee.store');
 Route::get('/edit/employee/{id}', 'HomeController@edit')->name('employee.edit');
 Route::put('/update/employee/{id}', 'HomeController@update')->name('employee.update');
 Route::delete('/delete/employee/{id}', 'HomeController@delete')->name('employee.delete');
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return redirect('/');
+    });
+});
