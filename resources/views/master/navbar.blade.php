@@ -32,7 +32,7 @@
               Home
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{ route('employees') }}">Listes des employés</a></li>
+              <li><a class="dropdown-item" href="{{ route('employees0') }}">Listes des employés</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>

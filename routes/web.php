@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/employees', 'HomeController@index')->name('employees');
+//Route::get('/employees', 'HomeController@index')->name('employees');
 Route::get('/employee/{id}', 'HomeController@show')->name('employee.show');
 Route::get('/create/employee', 'HomeController@create')->name('employee.create');
 Route::post('/add/employee', 'HomeController@store')->name('employee.store');
@@ -35,6 +35,18 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    // Route::get('/employees0', function () {
+    //     return view('employees0');
+    // })->name('employees0');
+
+    Route::get('/employees0','HomeController@index')->name('employees0');
+
+});
 
 // Route::middleware([
 //     'auth:sanctum',

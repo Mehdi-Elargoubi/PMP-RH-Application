@@ -13,9 +13,9 @@ class HomeController extends Controller
 
         $employees = Employee::orderBy("name", "asc")->get(); // Tri par ordre alphabétique ascendant du nom
         //$employees=Employee::all();
-        return view('employees')->with([
+        return view('employees0')->with([
             'employees'=>$employees,
-            
+
             ]); 
     }
 
@@ -53,7 +53,7 @@ class HomeController extends Controller
             // 'image'=> "https://img.freepik.com/vecteurs-libre/employe-du-mois-dans-cadre_23-2148462287.jpg"
             'image'=>$image_name,
         ]);
-        return redirect()->route('employees')->with([
+        return redirect()->route('employees0')->with([
             'success'=>'L\'employé a été ajouté avec succès.',
         ]);
 
@@ -96,7 +96,7 @@ class HomeController extends Controller
         'image'=> $image_name,
     ]);
 
-    return redirect()->route('employees')->with([
+    return redirect()->route('employees0')->with([
         'success' => 'Les informations ont été bien modifiés.'
     ]); 
 
@@ -104,9 +104,9 @@ class HomeController extends Controller
 
     public function delete($id){
         $employee=Employee::find($id);
-        unlink(public_path('uploads') .'/'. $employee->image);
+        //unlink(public_path('uploads') .'/'. $employee->image);
         $employee->delete();
-        return redirect()->route('employees')->with([
+        return redirect()->route('employees0')->with([
             'success' => 'Employé supprimé avec succès'
         ]); 
     

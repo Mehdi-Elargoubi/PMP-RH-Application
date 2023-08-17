@@ -9,15 +9,27 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './src/**/*.{html,js}',
+        "./resources/**/*.js",
+        "./resources/**/*.vue",        
+        "./resources/**/*.blade.php",
+        "./node_modules/flowbite/**/*.js",
+        
     ],
-
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                serif: ['ui-serif', 'Georgia'],
+                mono: ['ui-monospace', 'SFMono-Regular'],
             },
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [
+        forms,
+        typography,
+        require('flowbite/plugin'),
+
+    ],
 };
