@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\employee;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Livewire\WithPagination;
 
 class HomeController extends Controller
 {
     //
+    use WithPagination;
     public function index(){
 
-        $employees = Employee::orderBy("name", "asc")->get(); // Tri par ordre alphabétique ascendant du nom
+        // $employees = Employee::orderBy("name", "asc")->get(); // Tri par ordre alphabétique ascendant du nom
         //$employees=Employee::all();
+        $employees=Employee::orderBy("id", "asc")->paginate(5);
         return view('employees0')->with([
             'employees'=>$employees,
 
