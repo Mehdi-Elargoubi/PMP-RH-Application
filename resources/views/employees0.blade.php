@@ -17,7 +17,7 @@
                     <h1 class="mt-8 text-4xl  text-gray-900 text-center underline  font-serif ">
                         Liste des employés 
                     </h1>
-                    <div class=" mt-6 mb-6 text-gray-500 leading-relaxed font-serif">
+                    {{-- <div class=" mt-6 mb-6 text-gray-500 leading-relaxed font-serif">
                         <p class="text-xl text-bold">
                             test here
                         </p>
@@ -25,10 +25,10 @@
 
 
 
-                        {{-- table 2 --}}
+                        table 2
 
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
-                            {{-- <div class="flex items-center justify-between p-4">
+                            <div class="flex items-center justify-between p-4">
                                 <label for="table-search" class="sr-only">Search</label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -36,7 +36,7 @@
                                     </div>
                                     <input type="text" name="search" id="search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-slate-500 focus:border-slate-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Chercher ...">
                                 </div>
-                            </div> --}}
+                            </div>
                             @livewire('employees')
                             
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -183,8 +183,12 @@
                             </div>
 
                         </div>
-                    </div>
-                
+                    </div> --}}
+
+                    
+                    {{-- livewire --}}
+                    @livewire('employees')
+
                     <p class="mt-6 text-gray-700 leading-relaxed">
                         Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
                         to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe

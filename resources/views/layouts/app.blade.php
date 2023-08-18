@@ -13,8 +13,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <!-- Styles -->
+        <livewire:styles/>
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
@@ -41,7 +44,7 @@
         @stack('modals')
 
         @livewireScripts
-
+        <livewire:scripts/>
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </body>
 </html>
