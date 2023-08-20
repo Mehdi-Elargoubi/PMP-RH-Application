@@ -9,8 +9,16 @@ use Livewire\WithPagination;
 class Employees extends Component
 {
     use WithPagination;
+
+    //for searching
     public $searchTerm='';
     private $employees;
+
+    //for sorting
+    public $sortBy='id';
+    public $sortAsc = true;
+
+    public $confirmingEmployeeDeletion=false;
 
     public function render()
     {
@@ -40,10 +48,25 @@ class Employees extends Component
                   ->orWhere('observ', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('equipe', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('image', 'like', '%' . $this->searchTerm . '%');
-        })->paginate(5);
+        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate(3);
 
         return view('livewire.employees',[
             'employees' => $this->employees,
         ]);
     }
+
+
+
+    public function confirmEmployeeDeletion($id){
+        $this->confirmingEmployeeDeletion=$id;
+        //$employee->delete();
+    }
+    
+    public function sortBy($field){
+        if($field==$this->sortBy){
+            $this->sortAsc = !$this->sortAsc;
+        }
+        $this->sortBy=$field;
+    }
+
 }
