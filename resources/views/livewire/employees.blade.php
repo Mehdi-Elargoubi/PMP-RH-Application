@@ -9,11 +9,28 @@
                 <h1 class="mt-8 text-4xl  text-gray-900 text-center underline  font-serif ">
                     Liste des employés 
                 </h1>
-                
-                <div class=" mt-6 mb-6 text-gray-500 leading-relaxed font-serif">
-                    <p class="text-xl text-bold text-red-300">
-                        test here
-                    </p>
+            
+                <div class="mb-6 text-gray-500 leading-relaxed font-serif">
+    
+                    <br>
+                    @if($showSuccessMessage)
+                    {{-- <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert"> --}}
+                        <div class="flex justify-center items-center mx-auto">
+                            <div id="success-delete" name="success-delete" class=" text-center inline-block mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative transition-opacity duration-300" role="alert">
+                                <strong class="font-bold">Succès !</strong>
+                                <span class="block sm:inline pr-7">Employé supprimé avec succès.</span>
+                                <span 
+                                onclick="document.getElementById('success-delete').style.display = 'none';"
+                                class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                    <svg  class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <title>Close</title>
+                                        <path d="M14.348 5.652a.5.5 0 010 .707L10.707 10l3.641 3.641a.5.5 0 11-.707.707L10 10.707l-3.641 3.641a.5.5 0 01-.707-.707L9.293 10 5.652 6.359a.5.5 0 01.707-.707L10 9.293l3.641-3.641a.5.5 0 01.707 0z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    @endif                                       
+
                     <br>
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
@@ -162,10 +179,12 @@
                                                 @method('delete')
                                             </form>
                                             <button 
-                                                    wire:click='confirmEmployeeDeletion({{ $employee->id }})' wire:loading.attr='disabled'
-                                                    onclick="event.preventDefault();
+                                                    wire:click="changeDelete({{ $employee->id }})"
+                                                    data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                                                    {{-- wire:click='confirmEmployeeDeletion({{ $employee->id }})' wire:loading.attr='disabled' --}}
+                                                    {{-- onclick="event.preventDefault();
                                                     if(confirm('Souhaitez-vous supprimer cet employé ?'))
-                                                    document.getElementById('{{ $employee->id }}').submit();" 
+                                                    document.getElementById('{{ $employee->id }}').submit();"  --}}
                                                     class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                                                 <span class="relative px-3 py-2 text-xs transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                                     Supprimer
@@ -173,6 +192,8 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    @include("modal")
+
                                 @endforeach
 
                             </tbody>
@@ -218,6 +239,13 @@
 
         </div>
     </div>
+
+
+
+
+
+
+
 </div>
 
 

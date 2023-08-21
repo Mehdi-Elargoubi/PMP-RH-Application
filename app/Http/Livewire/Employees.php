@@ -18,6 +18,12 @@ class Employees extends Component
     public $sortBy='id';
     public $sortAsc = true;
 
+    //for deleting
+    public $emps;
+    public $employeeID=0;
+    public $showSuccessMessage = false;
+
+
     public $confirmingEmployeeDeletion=false;
 
     public function render()
@@ -48,19 +54,13 @@ class Employees extends Component
                   ->orWhere('observ', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('equipe', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('image', 'like', '%' . $this->searchTerm . '%');
-        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate(3);
+        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate(5);
 
         return view('livewire.employees',[
             'employees' => $this->employees,
         ]);
     }
 
-
-
-    public function confirmEmployeeDeletion($id){
-        $this->confirmingEmployeeDeletion=$id;
-        //$employee->delete();
-    }
     
     public function sortBy($field){
         if($field==$this->sortBy){
@@ -68,5 +68,22 @@ class Employees extends Component
         }
         $this->sortBy=$field;
     }
+
+    public function changeDelete($id){
+        $this->employeeID=$id;
+    }
+
+    public function deleteEmployee(){
+        $this->showSuccessMessage = false;   
+        if($this->employeeID==0){
+            return;
+        }
+        $employee=Employee::find($this->employeeID);
+        $employee->delete();
+        $this->employeeID=0;
+        $this->showSuccessMessage = true;   
+    }
+
+
 
 }

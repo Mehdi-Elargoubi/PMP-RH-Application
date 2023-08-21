@@ -72,14 +72,16 @@
                             @method('delete')
                         </form>
                         <button 
-                            onclick="event.preventDefault();
+                            data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                            {{-- onclick="event.preventDefault();
                             if(confirm('Souhaitez-vous supprimer cet employé ?'))
-                            document.getElementById('{{ $employee->id }}').submit();" 
+                            document.getElementById('{{ $employee->id }}').submit();"  --}}
                             type="button" class="btn btn-outline-danger btn-sm">
                             Supprimer
                         </button>
                     </td>
                   </tr>
+
                   @endforeach
             </table>
         </div>
