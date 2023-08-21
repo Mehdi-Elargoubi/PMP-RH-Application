@@ -45,11 +45,9 @@
 
                             <label for="table-search" class="sr-only">Ajouter</label>
                             <div class="relative">
-                                <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-slate-400 to-gray-200 group-hover:from-slate-200 group-hover:to-slate-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-slate-100 dark:focus:ring-blue-800">
+                                <button data-modal-target="addModal" data-modal-toggle="addModal" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-slate-400 to-gray-200 group-hover:from-slate-200 group-hover:to-slate-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-slate-100 dark:focus:ring-blue-800">
                                     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                        <a href="{{ route('employee.create') }}">
                                             Ajouter un employé
-                                        </a> 
                                     </span>
                                   </button>                            
                             </div>
@@ -241,6 +239,17 @@
     </div>
 
 
+
+
+
+  ____________
+
+<!-- Modal toggle -->
+<button data-modal-target="addModal" data-modal-toggle="addModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+    Toggle modal
+</button>
+  
+  
 
 
 

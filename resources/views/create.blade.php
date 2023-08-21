@@ -47,7 +47,7 @@
                               </div>                              
                               
                               <div class="mb-3">
-                                <label for="exampleFormControlInput6" class="form-label">Equipe</label>
+                                <label for="exampleFormControlInput6" class="form-label">Équipe</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput6" name="equipe" >
                               </div>                              
                               
