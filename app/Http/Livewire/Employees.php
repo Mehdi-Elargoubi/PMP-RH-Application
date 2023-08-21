@@ -75,12 +75,12 @@ class Employees extends Component
 
     public function deleteEmployee(){
         $this->showSuccessMessage = false;   
-        if($this->employeeID==0){
-            return;
-        }
+        // if($this->employeeID==0){
+        //     return;
+        // }
         $employee=Employee::find($this->employeeID);
         $employee->delete();
-        $this->employeeID=0;
+        // $this->employeeID=0;
         $this->showSuccessMessage = true;   
     }
 
