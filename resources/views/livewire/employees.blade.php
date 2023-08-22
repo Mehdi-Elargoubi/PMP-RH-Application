@@ -29,8 +29,24 @@
                                 </span>
                             </div>
                         </div>
-                    @endif                                       
+                    @endif     
+                    
+                    <br>
+                    @if (session()->has('message'))
+                        <div class="flex justify-center items-center mx-auto">
+                            <div id="success-delete" name="success-delete" class=" text-center inline-block mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative transition-opacity duration-300" role="alert">
+                                <strong class="font-bold">Succès !</strong>
+                                <span class="block sm:inline pr-7">{{ session('message') }}</span>
+                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                    <svg  class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <title>Close</title>
+                                        <path d="M14.348 5.652a.5.5 0 010 .707L10.707 10l3.641 3.641a.5.5 0 11-.707.707L10 10.707l-3.641 3.641a.5.5 0 01-.707-.707L9.293 10 5.652 6.359a.5.5 0 01.707-.707L10 9.293l3.641-3.641a.5.5 0 01.707 0z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
 
+                    @endif
                     <br>
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
@@ -45,7 +61,7 @@
 
                             <label for="table-search" class="sr-only">Ajouter</label>
                             <div class="relative">
-                                <button data-modal-target="addModal" data-modal-toggle="addModal" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-slate-400 to-gray-200 group-hover:from-slate-200 group-hover:to-slate-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-slate-100 dark:focus:ring-blue-800">
+                                <button data-modal-target="add-Modal" data-modal-toggle="add-Modal" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-slate-400 to-gray-200 group-hover:from-slate-200 group-hover:to-slate-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-slate-100 dark:focus:ring-blue-800">
                                     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                             Ajouter un employé
                                     </span>
@@ -131,13 +147,14 @@
                                         <span>Action</span>
                                     </th>
                                 </tr>
-                            </thead>
-
                             <tbody>
                                 @foreach ($employees as $employee)
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img src="{{ asset('./uploads/'.$employee->image) }}" width="40px" height="40px" class="text-center mx-auto rounded-full ">
+                                            {{-- <img src="{{ asset('uploads/' . $employee->image) }}" width="40px" height="40px" class="text-center mx-auto rounded-full "> --}}
+                                            {{-- <img src="{{ asset('uploads/' . $employee->image) }}" width="40px" height="40px" alt="{{ $employee->name }}" width="40px" height="40px" class="text-center mx-auto rounded-full"> --}}
+                                            {{-- <img src="{{ asset('storage/' . $employee->image) }}" width="40px" height="40px" alt="{{ $employee->name }}" class="text-center mx-auto rounded-full"> --}}
+                                            <img src="{{ asset('storage/' . $employee->image) }}" width="40px" height="40px" alt="{{ $employee->name }}" class="text-center mx-auto rounded-full">
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $employee["id"] }}
@@ -284,3 +301,4 @@
     @endif
 </ul>
 </div> --}}
+

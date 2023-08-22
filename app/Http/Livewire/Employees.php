@@ -2,13 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Requests\EmployeeRequest;
 use Livewire\Component;
 use App\Models\employee;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Nette\Utils\Image;
 
 class Employees extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+
+    public $confirmEmployeeAdd;
 
     //for searching
     public $searchTerm='';
@@ -84,6 +91,108 @@ class Employees extends Component
         $this->showSuccessMessage = true;   
     }
 
+
+    public $name, $matr, $jobP, $jobR, $observ, $image, $equipe, $imageName;
+
+    protected function rules(){
+        return [
+            'name' => 'required|string|min:5',
+            'matr' => 'required',
+        ];
+    }
+    protected $messages = [
+        'name.required' => 'Le champ Nom est obligatoire.',
+        'name.min' => 'Le champ Nom est obligatoire 5.',
+        'matr.required' => 'Le champ Matricule est obligatoire.',
+    ];
+
+    public function updated($fields){
+
+        $this->validateOnly($fields);
+    }
+    // bda f 114 o sala f 178
+
+    public $filepath="";
+    public $showModal = false;
+    public function saveEmployee(){
+
+        $validatedData=$this->validate();
+
+        $newEmployee = new employee();
+        $newEmployee -> name =$this->name ;
+        $newEmployee -> matr =$this->matr ;
+        $newEmployee -> jobP =$this->jobP ;
+        $newEmployee -> jobR =$this->jobR ;
+        $newEmployee -> observ =$this->observ ;
+        // $newEmployee -> image =$this->image ;
+        // if ($this->image) {
+        //     $file=$this->image;
+        //     $imageName=time().'_'.$file->getClientOriginalName();
+        //     $imagePath = $file->storeAs('',$imageName, 'public');
+        //     // $imagePath = $file->move(public_path('uploads'),$imageName);
+        
+        //     $newEmployee->image = $imagePath;
+        // }
+
+        if ($this->image) {
+            $file = $this->image;
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $imagePath = $file->storeAs('uploads', $imageName, 'public'); // Stocker dans le dossier 'uploads'
+            $newEmployee->image = $imagePath;
+            $this->filepath = $imagePath;
+          
+        }else{
+            $imageName = 'uploads/worker.png';
+            $newEmployee->image = $imageName;
+        }
+    
+
+        // if($request->has('image')){
+        //     $file=$request->image;
+        //     $image_name=time().'_'.$file->getClientOriginalName();
+        //     $file->move(public_path('uploads'),$image_name);
+        //     $file->move(public_path('uploads'),$imageName);
+        // }
+        // else{
+        //     $image_name='worker.png';
+        // }
+
+        $newEmployee->save();
+
+        // if($this->image) {
+        //     $this->imageName = time() . '_' . $this->image->getClientOriginalName();
+        //     $this->image->storeAs('uploads', $this->imageName, 'public');
+        //     // $this->image->move(public_path('uploads'),$this->imageName);
+        // } else {
+        //     $this->imageName = 'worker.png';
+        // }
+
+        // Employee::create([
+        //     'name' => $this->name,
+        //     'matr' => $this->matr,
+        //     'jobP' => $this->jobP,
+        //     'jobR' => $this->jobR,
+        //     'observ' => $this->observ,
+        //     'equipe' => $this->equipe,
+        //     'image' => $this->imageName,
+        // ]);
+        $this->showModal = true;
+        // Employee::create($validatedData);
+        session()->flash('message','L\'employé a été ajouté avec succès.');
+        // $this->emit('employeeAdded');
+        $this->resetInput();
+    }
+    // 7bess hna
+
+    public function resetInput(){
+        $this->name='';
+        $this->matr='';
+        $this->jobP='';
+        $this->jobR='';
+        $this->observ='';
+        $this->equipe='';
+        $this->image=null;
+    }
 
 
 }
