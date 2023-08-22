@@ -33,7 +33,7 @@
                     
                     <br>
                     @if (session()->has('message'))
-                        <div class="flex justify-center items-center mx-auto">
+                        {{-- <div class="flex justify-center items-center mx-auto">
                             <div id="success-delete" name="success-delete" class=" text-center inline-block mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative transition-opacity duration-300" role="alert">
                                 <strong class="font-bold">Succès !</strong>
                                 <span class="block sm:inline pr-7">{{ session('message') }}</span>
@@ -44,7 +44,31 @@
                                     </svg>
                                 </span>
                             </div>
+                        </div> --}}
+
+                        <div x-data="{ successModal: true }">
+                            {{-- <!-- Button to Open Modal -->
+                            <button @click='showModal = true' class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                                Open Modal
+                            </button> --}}
+                        
+                            <!-- Modal Overlay -->
+                            <div x-show="successModal" class="fixed inset-0 flex items-center justify-center z-50">
+                                <!-- Modal Content -->
+                                <div class="bg-green-200 rounded-lg shadow-md p-3 px-6 m-4 max-w-xs w-full">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="font-semibold text-lg">Succès !</h3>
+                                        <button @click='successModal = false' class="text-gray-600 hover:text-gray-800 transition">
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <p class="text-gray-700">{{ session('message') }}</p>
+                                </div>
+                            </div>
                         </div>
+                        
 
                     @endif
                     <br>

@@ -181,6 +181,7 @@ class Employees extends Component
         session()->flash('message','L\'employé a été ajouté avec succès.');
         // $this->emit('employeeAdded');
         $this->resetInput();
+        return redirect()->to('employees0');
     }
     // 7bess hna
 

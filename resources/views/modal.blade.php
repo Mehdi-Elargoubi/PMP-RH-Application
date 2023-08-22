@@ -186,8 +186,7 @@
                                     </label>
                                 </div>  
 
-                                
-                                @if ($image)
+                                 @if ($image)
                                     <img class="rounded w-10 h-10 mt-5 block" src="{{ $image->temporaryUrl() }}" width="50px" height="50px" alt="">                                    
                                 @endif
 
