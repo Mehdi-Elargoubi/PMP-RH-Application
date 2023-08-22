@@ -61,7 +61,7 @@ class Employees extends Component
                   ->orWhere('observ', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('equipe', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('image', 'like', '%' . $this->searchTerm . '%');
-        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate(5);
+        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate(10);
 
         return view('livewire.employees',[
             'employees' => $this->employees,
@@ -194,6 +194,57 @@ class Employees extends Component
         $this->equipe='';
         $this->image=null;
     }
+
+
+    public function closeModal(){
+        $this->resetInput();
+    }
+
+    // Update Employé
+    public $employee_id;
+
+    public function editEmployee(int $id){
+        $employee = Employee::find($id);
+        if($employee){
+            $this->employee_id=$employee->id;
+            $this->name=$employee->name;
+            $this->matr=$employee->matr;
+            $this->jobP=$employee->jobP;
+            $this->jobR=$employee->jobR;
+            $this->observ=$employee->observ;
+
+            if ($this->image) {
+                $file = $this->image;
+                $imageName = time() . '_' . $file->getClientOriginalName();
+                $imagePath = $file->storeAs('', $imageName, 'public');
+                $employee->image = $imagePath;
+            }
+        
+        }else{
+            return redirect()->to('employees0');
+         }
+    }
+
+    public function updateEmployee(){
+        $validatedData=$this->validate();
+
+        Employee::where('id',$this->employee_id)->update([
+            'name' => $this->name,
+            'matr' => $this->matr,
+            'jobP' => $this->jobP,
+            'jobR' => $this->jobR,
+            'observ' => $this->observ,
+            'equipe' => $this->equipe,
+            'image' => $this->imageName,
+
+        ]);
+        session()->flash('message', 'Les informations de l\'employé ont été mises à jour avec succès.');
+        $this->resetInput();
+        $this->dispatchBrowserEvent('close-modal');
+    }
+
+
+
 
 
 }

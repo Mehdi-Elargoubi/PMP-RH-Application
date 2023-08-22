@@ -206,11 +206,18 @@
                                             </a>                          
                                         </td>
                                         <td>
-                                            <a href="{{ route('employee.edit',$employee->id) }}" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:to-lime-300  group-hover:from-purple-600  hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                            {{-- <a href="{{ route('employee.edit',$employee->id) }}" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:to-lime-300  group-hover:from-purple-600  hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                                 <span class="relative text-xs px-3 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                                     Modifier
                                                 </span>
-                                            </a>                          
+                                            </a>                           --}}
+                                            <button wire:click="editEmployee({{ $employee->id }})" 
+                                                data-modal-target="#updateModal" data-modal-toggle="updateModal"
+                                                class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:to-lime-300  group-hover:from-purple-600  hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                                <span class="relative text-xs px-3 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                                        Modifier
+                                                </span>
+                                            </button>
                                         </td>
                                         <td>
                                             <form id="{{ $employee->id }}" action="{{ route('employee.delete', $employee->id) }}" method="post">
@@ -219,7 +226,7 @@
                                             </form>
                                             <button 
                                                     wire:click="changeDelete({{ $employee->id }})"
-                                                    data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                                                    data-modal-target="#delete-modal" data-modal-toggle="delete-modal"
                                                     {{-- wire:click='confirmEmployeeDeletion({{ $employee->id }})' wire:loading.attr='disabled' --}}
                                                     {{-- onclick="event.preventDefault();
                                                     if(confirm('Souhaitez-vous supprimer cet employé ?'))
