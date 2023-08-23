@@ -19,7 +19,6 @@ class HomeController extends Controller
         $employees=Employee::orderBy("id", "asc")->paginate(5);
         return view('employees0')->with([
             'employees'=>$employees,
-
             ]); 
     }
 
@@ -30,6 +29,15 @@ class HomeController extends Controller
             'employee' => $employee
         ]);
     }
+
+    public function profile($id){
+        $employee = Employee::find($id);
+        return view('profile')->with([
+            'employee' => $employee
+        ]);
+    }
+
+
 
     public function create(){
         return view('create');

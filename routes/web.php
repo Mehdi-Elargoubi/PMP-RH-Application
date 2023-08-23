@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Employees;
+use App\Http\Livewire\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,17 @@ Route::middleware([
     })->name('profile');
 
     Route::get('/employees0','HomeController@index')->name('employees0');
+    Route::get('/employee/{id}', 'HomeController@profile')->name('employee.profile');
+    Route::get('/employee/{id}', 'HomeController@show')->name('employee.show');
+
+    // Route::get('/employee/{id}', EmployeeProfile::class)->name('employee.profile');
+    // Route::get('/employee/{id}', [Profile::class, 'mount'])->name('employee.profile');
+    // Route::get('/employee/{id}', [Profile::class, 'mount'])->name('employee.profile');
+    // Route::get('/employee/{id}', 'HomeController@profile')->name('employee.profile');
+
+
+    // Route::get('/profile/{id}', function ($employeeId) { return view('profile', compact('$employeeId') ); });
+    // Route::view('/profile','profile') ;
 
 });
 
