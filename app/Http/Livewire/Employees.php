@@ -212,6 +212,7 @@ class Employees extends Component
             $this->jobP=$employee->jobP;
             $this->jobR=$employee->jobR;
             $this->observ=$employee->observ;
+            $this->imageName=$employee->image;
 
             if ($this->image) {
                 $file = $this->image;
@@ -227,8 +228,10 @@ class Employees extends Component
 
     public function updateEmployee(){
         $validatedData=$this->validate();
+        $employee = Employee::find($this->id);
 
         Employee::where('id',$this->employee_id)->update([
+            // $employee->update([
             'name' => $this->name,
             'matr' => $this->matr,
             'jobP' => $this->jobP,
@@ -238,9 +241,10 @@ class Employees extends Component
             'image' => $this->imageName,
 
         ]);
-        session()->flash('message', 'Les informations de l\'employé ont été mises à jour avec succès.');
+        
+        session()->flash('message', " Les informations de l'employé "  . $this->name . " ont été mises à jour avec succès.");
         $this->resetInput();
-        $this->dispatchBrowserEvent('close-modal');
+        return redirect()->to('employees0');
     }
 
 

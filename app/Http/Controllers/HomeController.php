@@ -76,33 +76,33 @@ class HomeController extends Controller
         //     'name'=>'required',
         // ]);
 
-    $employee = Employee::find($id);
+        $employee = Employee::find($id);
 
-    if($request->has('image')){
-        $file = $request->image;
-        $image_name = time().'_'.$file->getClientOriginalName();
-        $file->move(public_path('uploads'), $image_name);
-        //unlink(public_path('uploads') .'/'. $employee->image);
-        $employee->image = $image_name;
-        //$employee->image = '/uploads/'.$image_name;
-    }
-    else{
-        $image_name = $employee->image;
-    }
-    
-    $employee->update([
-        'name' => $request->name,
-        'matr'=> $request->matr,
-        'jobP'=> $request->jobP,
-        'jobR'=> $request->jobR,
-        'observ'=> $request->observ,
-        'equipe'=> $request->equipe,
-        'image'=> $image_name,
-    ]);
+        if($request->has('image')){
+            $file = $request->image;
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $image_name);
+            //unlink(public_path('uploads') .'/'. $employee->image);
+            $employee->image = $image_name;
+            //$employee->image = '/uploads/'.$image_name;
+        }
+        else{
+            $image_name = $employee->image;
+        }
+        
+        $employee->update([
+            'name' => $request->name,
+            'matr'=> $request->matr,
+            'jobP'=> $request->jobP,
+            'jobR'=> $request->jobR,
+            'observ'=> $request->observ,
+            'equipe'=> $request->equipe,
+            'image'=> $image_name,
+        ]);
 
-    return redirect()->route('employees0')->with([
-        'success' => 'Les informations ont été bien modifiés.'
-    ]); 
+        return redirect()->route('employees0')->with([
+            'success' => 'Les informations ont été bien modifiés.'
+        ]); 
 
     }
 
