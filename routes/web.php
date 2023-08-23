@@ -45,6 +45,10 @@ Route::middleware([
     //     return view('employees0');
     // })->name('employees0');
 
+        Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+
     Route::get('/employees0','HomeController@index')->name('employees0');
 
 });

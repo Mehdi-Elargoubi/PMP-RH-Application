@@ -29,6 +29,10 @@
                     <x-nav-link href="{{ route('employees0') }}" :active="request()->routeIs('employees0')">
                         {{ __('Employés0') }}
                     </x-nav-link>
+                    <!--Navigation link : Profile user-->
+                    <x-nav-link href="{{ route('profile') }}" :active="request()->routeIs('profile')">
+                        {{ __('Profile User') }}
+                    </x-nav-link>
                 </div>  
             </div>
 
@@ -167,6 +171,10 @@
             
             <x-responsive-nav-link href="{{ route('employees0') }}" :active="request()->routeIs('employees0')">
                 {{ __('Employés0') }}
+            </x-responsive-nav-link>            
+            
+            <x-responsive-nav-link href="{{ route('profile') }}" :active="request()->routeIs('profile')">
+                {{ __('Profile User') }}
             </x-responsive-nav-link>
         </div>
 

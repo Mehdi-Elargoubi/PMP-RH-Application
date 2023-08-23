@@ -33,8 +33,7 @@ class Employees extends Component
 
     public $confirmingEmployeeDeletion=false;
 
-    public function render()
-    {
+    public function render(){
 
         // $this->employees=Employee::where(function ($query) {
         //     $query->where('name', 'like', '%' . $this->searchTerm . '%')
@@ -81,14 +80,11 @@ class Employees extends Component
     }
 
     public function deleteEmployee(){
-        $this->showSuccessMessage = false;   
-        // if($this->employeeID==0){
-        //     return;
-        // }
         $employee=Employee::find($this->employeeID);
         $employee->delete();
-        // $this->employeeID=0;
-        $this->showSuccessMessage = true;   
+        session()->flash('message','Employé supprimé avec succès.');
+        return redirect()->to(route('employees0'));
+        //return view('livewire.employees');
     }
 
 
@@ -107,7 +103,6 @@ class Employees extends Component
     ];
 
     public function updated($fields){
-
         $this->validateOnly($fields);
     }
     // bda f 114 o sala f 178
@@ -214,12 +209,15 @@ class Employees extends Component
             $this->observ=$employee->observ;
             $this->imageName=$employee->image;
 
-            if ($this->image) {
-                $file = $this->image;
-                $imageName = time() . '_' . $file->getClientOriginalName();
-                $imagePath = $file->storeAs('', $imageName, 'public');
-                $employee->image = $imagePath;
-            }
+            // if ($this->image) {
+            //     $file = $this->image;
+            //     $imageName = time() . '_' . $file->getClientOriginalName();
+            //     $imagePath = $file->storeAs('', $imageName, 'public');
+            //     $employee->image = $imagePath;
+            // }else{
+            //     // $employee->image = $this->imageName ;
+            //     $this->imageName=$employee->image;
+            // }
         
         }else{
             return redirect()->to('employees0');
@@ -230,6 +228,16 @@ class Employees extends Component
         $validatedData=$this->validate();
         $employee = Employee::find($this->id);
 
+        if ($this->image) {
+            $file = $this->image;
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $imagePath = $file->storeAs('', $imageName, 'public');
+            // $employee->image = $imagePath;
+            $this->image = $imagePath;
+        }else{
+            $this->image =$this->imageName;
+        }
+
         Employee::where('id',$this->employee_id)->update([
             // $employee->update([
             'name' => $this->name,
@@ -238,7 +246,7 @@ class Employees extends Component
             'jobR' => $this->jobR,
             'observ' => $this->observ,
             'equipe' => $this->equipe,
-            'image' => $this->imageName,
+            'image' => $this->image,
 
         ]);
         

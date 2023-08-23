@@ -10,48 +10,11 @@
                     Liste des employés 
                 </h1>
             
-                <div class="mb-6 text-gray-500 leading-relaxed font-serif">
-    
-                    <br>
-                    @if($showSuccessMessage)
-                    {{-- <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert"> --}}
-                        <div class="flex justify-center items-center mx-auto">
-                            <div id="success-delete" name="success-delete" class=" text-center inline-block mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative transition-opacity duration-300" role="alert">
-                                <strong class="font-bold">Succès !</strong>
-                                <span class="block sm:inline pr-7">Employé supprimé avec succès.</span>
-                                <span 
-                                onclick="document.getElementById('success-delete').style.display = 'none';"
-                                class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                    <svg  class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <title>Close</title>
-                                        <path d="M14.348 5.652a.5.5 0 010 .707L10.707 10l3.641 3.641a.5.5 0 11-.707.707L10 10.707l-3.641 3.641a.5.5 0 01-.707-.707L9.293 10 5.652 6.359a.5.5 0 01.707-.707L10 9.293l3.641-3.641a.5.5 0 01.707 0z"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    @endif     
+                <div class="mb-6 text-gray-500 leading-relaxed font-serif">  
                     
                     <br>
                     @if (session()->has('message'))
-                        {{-- <div class="flex justify-center items-center mx-auto">
-                            <div id="success-delete" name="success-delete" class=" text-center inline-block mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative transition-opacity duration-300" role="alert">
-                                <strong class="font-bold">Succès !</strong>
-                                <span class="block sm:inline pr-7">{{ session('message') }}</span>
-                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                    <svg  class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <title>Close</title>
-                                        <path d="M14.348 5.652a.5.5 0 010 .707L10.707 10l3.641 3.641a.5.5 0 11-.707.707L10 10.707l-3.641 3.641a.5.5 0 01-.707-.707L9.293 10 5.652 6.359a.5.5 0 01.707-.707L10 9.293l3.641-3.641a.5.5 0 01.707 0z"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div> --}}
-
                         <div x-data="{ successModal: true }">
-                            {{-- <!-- Button to Open Modal -->
-                            <button @click='showModal = true' class="bg-green-500 text-white px-4 py-2 rounded-lg">
-                                Open Modal
-                            </button> --}}
-                        
                             <!-- Modal Overlay -->
                             <div x-show="successModal" class="fixed inset-0 flex items-center justify-center z-50">
                                 <!-- Modal Content -->
@@ -68,10 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-
                     @endif
-                    <br>
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
                         <div class="flex items-center justify-between p-4 gap-4 columns-2 sm:columns-1 ">
@@ -225,12 +185,8 @@
                                                 @method('delete')
                                             </form>
                                             <button 
-                                                    wire:click="changeDelete({{ $employee->id }})"
-                                                    data-modal-target="#delete-modal" data-modal-toggle="delete-modal"
-                                                    {{-- wire:click='confirmEmployeeDeletion({{ $employee->id }})' wire:loading.attr='disabled' --}}
-                                                    {{-- onclick="event.preventDefault();
-                                                    if(confirm('Souhaitez-vous supprimer cet employé ?'))
-                                                    document.getElementById('{{ $employee->id }}').submit();"  --}}
+                                                    wire:click="changeDelete({{ $employee->id }})" 
+                                                    data-modal-target="#deleteModal" data-modal-toggle="deleteModal"
                                                     class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                                                 <span class="relative px-3 py-2 text-xs transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                                     Supprimer
@@ -253,83 +209,72 @@
                 </div>
             </div>
 
-            {{-- to here --}}
 
-            {{-- <div class="mt-5">
-                <x-danger-button wire:click="confirmEmployeeDeletion({{ $employee->id }})" wire:loading.attr="disabled">
-                    delete
-                </x-danger-button>
+
+
+
+
+
+
+
+
+
+            <div class="p-16">
+                <div class="p-8 bg-white shadow mt-24">
+                  <div class="grid grid-cols-1 md:grid-cols-3">
+                    <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+                      <div>
+                        <p class="font-bold text-gray-700 text-xl">22</p>
+                        <p class="text-gray-400">Friends</p>
+                      </div>
+                      <div>
+                           <p class="font-bold text-gray-700 text-xl">10</p>
+                        <p class="text-gray-400">Photos</p>
+                      </div>
+                          <div>
+                           <p class="font-bold text-gray-700 text-xl">89</p>
+                        <p class="text-gray-400">Comments</p>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                      </div>
+                    </div>
+                
+                    <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+                <button class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                  Connect
+                </button>
+                    <button class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                  Message
+                </button>
+                    </div>
+                  </div>
+                
+                  <div class="mt-20 text-center border-b pb-12">
+                    <h1 class="text-4xl font-medium text-gray-700">Jessica Jones, <span class="font-light text-gray-500">27</span></h1>
+                    <p class="font-light text-gray-600 mt-3">Bucharest, Romania</p>
+                
+                    <p class="mt-8 text-gray-500">Solution Manager - Creative Tim Officer</p>
+                    <p class="mt-2 text-gray-500">University of Computer Science</p>
+                  </div>
+                
+                  <div class="mt-12 flex flex-col justify-center">
+                    <p class="text-gray-600 text-center font-light lg:px-16">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
+                    <button class="text-indigo-500 py-2 px-4  font-medium mt-4">
+                  Show more
+                </button>
+                  </div>
+                
+                </div>
             </div>
 
-
-            <x-dialog-modal wire:model="confirmingEmployeeDeletion">
-                <x-slot name="title">
-                    {{ __('Supprimer l\'employé') }}
-                </x-slot>
-    
-                <x-slot name="content">
-                    {{ __('Souhaitez-vous supprimer cet employé ?') }}
-                </x-slot>
-    
-                <x-slot name="footer">
-                    <x-secondary-button wire:click="$set('confirmingEmployeeDeletion', false)" wire:loading.attr="disabled">
-                        {{ __('Annuler') }}
-                    </x-secondary-button>
-    
-                    <x-danger-button class="ml-3" wire:click="$confirmingEmployeeDeletion" wire:loading.attr="disabled">
-                        {{ __('Supprimer') }}
-                    </x-danger-button>
-                </x-slot>
-            </x-dialog-modal> --}}
-    
 
         </div>
     </div>
 
-
-
-
-
-  ____________
-
-<!-- Modal toggle -->
-<button data-modal-target="addModal" data-modal-toggle="addModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-    Toggle modal
-</button>
-  
-  
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-{{-- <div>
-    <input wire:model="searchTerm" type="text" class="form-control" placeholder="searching...">
-<br>
-<ul class="list-group">
-    @if ($employees && $employees->count()>0)
-        @foreach ( $employees as $employee )
-            <li class="list-group-item">
-                {{ $employee->name }}
-            </li>
-        @endforeach
-    @else
-        <p class="text-blue-700">
-            No user found
-        </p>       
-    @endif
-</ul>
-</div> --}}
 
