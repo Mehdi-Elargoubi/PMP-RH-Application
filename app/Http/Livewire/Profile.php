@@ -7,56 +7,25 @@ use Livewire\Component;
 
 class Profile extends Component
 {
-
     public $employeeId;
     public $emp_id;
-    public $employee;
-
-    public function mount($id){
-
-        $this->employee = Employee::find($id); 
-    } 
-
-    
-    // public function show($id){
-       
-    //     $employee = Employee::find($id);
-    //     return view('profile')->with([
-    //         'employee' => $employee
-    //     ]);
-    //     return view('livewire.employees',[
-    //         'employees' => $this->employees,
-    //     ]);
-
-    // }
-
-
+    public $employees;
 
     // public function mount($id){
-    //     $this->employee = Employee::find($id);
-        
-    //     // return view('profile')->with([
-    //     //     'employee' => $this->employee
-    //     // ]);
-
-    // }
+    //     $this->employee = Employee::find($id); 
+    // } 
 
     public function render()
     {
-        // $id=5;
-        // $employee=Employee::find($this->employeeId);
+        $employeeEquipe = Employee::orderBy('equipe')
+            ->get()
+            ->grouprBy('equipe');
+
         return view('livewire.profile',[
-            'employee'=>$this->employee
+            'employees'=>$employeeEquipe
         ]);
     }
 
-
-    // public function render()
-    // {
-    //     return view('livewire.profile',[
-    //         'employee'=>$employee
-    //     ]);
-    // }
 
 
 }

@@ -22,17 +22,24 @@
                     </x-nav-link> --}}
 
                     <!--Navigation link : Ajouter-->
-                    <x-nav-link href="{{ route('employee.create') }}" :active="request()->routeIs('employee.create')">
+                    {{-- <x-nav-link href="{{ route('employee.create') }}" :active="request()->routeIs('employee.create')">
                         {{ __('Ajouter Employé') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
+
                     <!--Navigation link : Liste des employés0-->
                     <x-nav-link href="{{ route('employees0') }}" :active="request()->routeIs('employees0')">
-                        {{ __('Employés0') }}
+                        {{ __('Employés') }}
                     </x-nav-link>
+
+                    <!--Navigation link : Liste des employés par groupe-->
+                    <x-nav-link href="{{ route('Equipe') }}" :active="request()->routeIs('Equipe')">
+                        {{ __('Employés par groupe') }}
+                    </x-nav-link>
+
                     <!--Navigation link : Profile user-->
-                    <x-nav-link href="{{ route('profile') }}" :active="request()->routeIs('profile')">
+                    {{-- <x-nav-link href="{{ route('profile') }}" :active="request()->routeIs('profile')">
                         {{ __('Profile User') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>  
             </div>
 
@@ -165,17 +172,21 @@
                 {{ __('Employés') }}
             </x-responsive-nav-link> --}}
 
-            <x-responsive-nav-link href="{{ route('employee.create') }}" :active="request()->routeIs('employee.create')">
+            {{-- <x-responsive-nav-link href="{{ route('employee.create') }}" :active="request()->routeIs('employee.create')">
                 {{ __('Ajouter Employé') }}
-            </x-responsive-nav-link>            
+            </x-responsive-nav-link>             --}}
             
             <x-responsive-nav-link href="{{ route('employees0') }}" :active="request()->routeIs('employees0')">
-                {{ __('Employés0') }}
+                {{ __('Employés') }}
+            </x-responsive-nav-link> 
+            
+            <x-responsive-nav-link href="{{ route('Equipe') }}" :active="request()->routeIs('Equipe')">
+                {{ __('Employés par groupe') }}
             </x-responsive-nav-link>            
             
-            <x-responsive-nav-link href="{{ route('profile') }}" :active="request()->routeIs('profile')">
+            {{-- <x-responsive-nav-link href="{{ route('profile') }}" :active="request()->routeIs('profile')">
                 {{ __('Profile User') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->

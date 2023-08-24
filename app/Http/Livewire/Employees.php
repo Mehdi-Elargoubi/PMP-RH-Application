@@ -122,6 +122,8 @@ class Employees extends Component
         $newEmployee -> jobP =$this->jobP ;
         $newEmployee -> jobR =$this->jobR ;
         $newEmployee -> observ =$this->observ ;
+        $newEmployee -> equipe =$this->equipe ;
+
         // $newEmployee -> image =$this->image ;
         // if ($this->image) {
         //     $file=$this->image;
@@ -210,6 +212,7 @@ class Employees extends Component
             $this->jobP=$employee->jobP;
             $this->jobR=$employee->jobR;
             $this->observ=$employee->observ;
+            $this->equipe=$employee->equipe;
             $this->imageName=$employee->image;
 
             // if ($this->image) {
@@ -252,6 +255,8 @@ class Employees extends Component
             'image' => $this->image,
 
         ]);
+        
+        redirect()->to('employees0');
         
         session()->flash('message', " Les informations de l'employé "  . $this->name . " ont été mises à jour avec succès.");
         $this->resetInput();

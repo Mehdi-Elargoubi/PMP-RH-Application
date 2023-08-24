@@ -1,4 +1,4 @@
-<div class="py-12">
+{{-- <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-blue-950  overflow-hidden shadow-xl sm:rounded-lg ">
         
@@ -50,7 +50,6 @@
                     <p class="text-gray-600 text-center font-light lg:px-16">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
                     <button class="text-indigo-500 py-2 px-4  font-medium mt-4">
                   Show more
-                  {{-- {{ $employee->id }} --}}
                 </button>
                   </div>
                  
@@ -60,5 +59,32 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 
+
+{{-- the NEW CODE --}}
+
+
+<div>
+  @foreach ($employeeEquipe as $equipe => $equipeEmployees)
+      <h2>{{ $equipe }}</h2>
+      <table>
+          <thead>
+              <tr>
+                  <th>Matricule</th>
+                  <th>Nom</th>
+                  <!-- Autres en-têtes de colonne -->
+              </tr>
+          </thead>
+          <tbody>
+              @foreach ($equipeEmployees as $employee)
+                  <tr>
+                      <td>{{ $employee->matr }}</td>
+                      <td>{{ $employee->name }}</td>
+                      <!-- Autres colonnes -->
+                  </tr>
+              @endforeach
+          </tbody>
+      </table>
+  @endforeach
+</div>

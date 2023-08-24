@@ -30,6 +30,9 @@
 
 
     <x-slot name="header">
+        {{ __('Profile d\'employé') }}
+    </x-slot>
+
         {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile User') }}
         </h2> --}}

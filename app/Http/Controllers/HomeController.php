@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Employees;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\employee;
 use Illuminate\Http\Request;
@@ -13,7 +14,6 @@ class HomeController extends Controller
     //
     use WithPagination;
     public function index(){
-
         // $employees = Employee::orderBy("name", "asc")->get(); // Tri par ordre alphabétique ascendant du nom
         //$employees=Employee::all();
         $employees=Employee::orderBy("id", "asc")->paginate(5);
@@ -29,6 +29,42 @@ class HomeController extends Controller
             'employee' => $employee
         ]);
     }
+    public function show2($id){
+        // return view('show')->with([
+        //     'id' => $id
+        // ]);
+        return view('employee.profile', ['id' => $id]);
+    }
+
+    public function showEquipe(){
+        $employeesEquipe = Employee::orderBy('equipe')
+        ->get()
+        ->groupBy('equipe');
+
+        return view('profile',[
+            'employeesEquipe'=>$employeesEquipe,
+            'employeesEquipe2'=>$employeesEquipe
+        ]);
+
+    }
+
+    public function statistic(){
+        $employeeCount = Employee::count();
+        $equipeCount = Employee::distinct('equipe')->count('equipe');
+        $stageCount = Employee::where('observ', 'LIKE', '%stag%')->count();
+
+        // return view('dashboard',compact('employeeCount','equipeCount','StageCount'));
+        // return view('components.welcome', [
+        //     'employeeCount'=>$employeeCount,
+        //     'equipeCount'=>$equipeCount,
+        //     'stageCount'=>$stageCount
+        // ]);
+        return view('dashboard', [
+            'statistics' => compact('employeeCount', 'equipeCount', 'stageCount')
+        ]);
+    
+    }
+
 
     public function profile($id){
         $employee = Employee::find($id);

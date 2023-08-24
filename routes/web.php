@@ -3,7 +3,7 @@
 use App\Http\Livewire\Employees;
 use App\Http\Livewire\Profile;
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('login');
 // });
 
 //Route::get('/employees', 'HomeController@index')->name('employees');
@@ -32,9 +32,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
+    // Route::get('/dashboard', 'HomeController@statistic')->name('dashboard');
+    Route::get('/dashboard', 'HomeController@statistic')->name('dashboard');
+
 });
 
 Route::middleware([
@@ -47,12 +48,13 @@ Route::middleware([
     // })->name('employees0');
 
         Route::get('/profile', function () {
-        return view('profile');
-    })->name('profile');
+            return view('profile');
+        })->name('profile');
 
     Route::get('/employees0','HomeController@index')->name('employees0');
-    Route::get('/employee/{id}', 'HomeController@profile')->name('employee.profile');
+    // Route::get('/employee/{id}', 'HomeController@profile')->name('employee.profile');
     Route::get('/employee/{id}', 'HomeController@show')->name('employee.show');
+    Route::get('/Equipe', 'HomeController@showEquipe')->name('Equipe');
 
     // Route::get('/employee/{id}', EmployeeProfile::class)->name('employee.profile');
     // Route::get('/employee/{id}', [Profile::class, 'mount'])->name('employee.profile');
@@ -74,3 +76,5 @@ Route::middleware([
 //         return redirect('/');
 //     });
 // });
+
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.redirect');
