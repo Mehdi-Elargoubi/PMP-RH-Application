@@ -34,7 +34,7 @@
                     @endif
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
-                        <div class="flex items-center justify-between p-4 gap-4 columns-2 sm:columns-1 ">
+                        <div class="flex items-center justify-between p-4 gap-4 columns-3 sm:columns-1 ">
                             <label for="table-search" class="sr-only">Search</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -42,6 +42,13 @@
                                 </div>
                                 <input wire:model="searchTerm" type="text" name="search" id="search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-slate-500 focus:border-slate-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Chercher ...">
                             </div>
+
+
+                            <label for="perPage" class="sr-only">Nombre d'employés</label>
+                            <div class="relative">
+                                <input type="number" wire:model="perPage" name="perPage" id="perPage" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-slate-500 focus:border-slate-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre des employés par page ...">
+                            </div>
+
 
                             <label for="table-search" class="sr-only">Ajouter</label>
                             <div class="relative">

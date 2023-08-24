@@ -21,6 +21,9 @@ class Employees extends Component
     public $searchTerm='';
     private $employees;
 
+    //for paginate
+    public $perPage=5;
+
     //for sorting
     public $sortBy='id';
     public $sortAsc = true;
@@ -60,7 +63,7 @@ class Employees extends Component
                   ->orWhere('observ', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('equipe', 'like', '%' . $this->searchTerm . '%')
                   ->orWhere('image', 'like', '%' . $this->searchTerm . '%');
-        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate(10);
+        })->orderBy($this->sortBy, $this->sortAsc ? 'ASC' : 'DESC')->paginate($this->perPage);
 
         return view('livewire.employees',[
             'employees' => $this->employees,
