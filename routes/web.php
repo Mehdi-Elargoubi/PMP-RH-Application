@@ -65,6 +65,8 @@ Route::middleware([
     // Route::get('/profile/{id}', function ($employeeId) { return view('profile', compact('$employeeId') ); });
     // Route::view('/profile','profile') ;
 
+    Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.redirect');
+
 });
 
 // Route::middleware([
@@ -77,4 +79,3 @@ Route::middleware([
 //     });
 // });
 
-Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.redirect');

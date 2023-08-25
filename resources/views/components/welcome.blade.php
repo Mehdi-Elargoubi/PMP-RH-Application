@@ -1,7 +1,7 @@
 @props(['statistics'])
 
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-1 gap-6 lg:gap-8 p-6 lg:p-8">
+<div class="bg-green-200  grid grid-cols-1 md:grid-cols-1 gap-6 lg:gap-8 p-6 lg:p-8">
     
     {{-- <div>
         <div class="flex items-center">
@@ -83,7 +83,7 @@
         </p>
     </div> --}}
 
-    <div class=" p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+    <div class=" p-4 bg-green-100 rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel" aria-labelledby="stats-tab">
         <dl class="grid max-w-screen-xl grid-cols-1 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-1 xl:grid-cols-3 dark:text-white sm:p-8">
             <div class="flex flex-col items-center justify-center">
                 <dt class="mb-2 text-3xl font-extrabold">{{ $statistics['employeeCount'] }}</dt>

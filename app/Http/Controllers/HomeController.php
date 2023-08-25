@@ -37,13 +37,12 @@ class HomeController extends Controller
     }
 
     public function showEquipe(){
-        $employeesEquipe = Employee::orderBy('equipe')
+        $employeesEquipe = Employee::orderBy('equipe','desc')
         ->get()
         ->groupBy('equipe');
 
-        return view('profile',[
+        return view('employeesEquipe',[
             'employeesEquipe'=>$employeesEquipe,
-            'employeesEquipe2'=>$employeesEquipe
         ]);
 
     }
