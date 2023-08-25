@@ -14,9 +14,7 @@ class HomeController extends Controller
     //
     use WithPagination;
     public function index(){
-        // $employees = Employee::orderBy("name", "asc")->get(); // Tri par ordre alphabétique ascendant du nom
-        //$employees=Employee::all();
-        $employees=Employee::orderBy("id", "asc")->paginate(5);
+        $employees=Employee::orderBy("name", "asc")->paginate(5);
         return view('employees0')->with([
             'employees'=>$employees,
             ]); 
@@ -24,16 +22,11 @@ class HomeController extends Controller
 
 
     public function show($id){
+
         $employee = Employee::find($id);
-        return view('show')->with([
-            'employee' => $employee
+        return view('livewire.profile')->with([
+            'employee' => $employee,
         ]);
-    }
-    public function show2($id){
-        // return view('show')->with([
-        //     'id' => $id
-        // ]);
-        return view('employee.profile', ['id' => $id]);
     }
 
     public function showEquipe(){
