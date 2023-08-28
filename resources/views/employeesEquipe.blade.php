@@ -12,7 +12,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        Par groupe
+        Par groupe - 0
     </x-slot>
 
     <div class="py-12">

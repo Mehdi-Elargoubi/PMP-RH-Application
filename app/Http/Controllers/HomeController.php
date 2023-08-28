@@ -34,7 +34,7 @@ class HomeController extends Controller
         ->get()
         ->groupBy('equipe');
 
-        return view('employeesEquipe',[
+        return view('livewire.employee-equipe',[
             'employeesEquipe'=>$employeesEquipe,
         ]);
 

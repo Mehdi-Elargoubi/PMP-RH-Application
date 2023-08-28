@@ -226,7 +226,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Modifier l'Employé</h3>
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Modifier l'Employé </h3>
                     {{-- <form class="space-y-6" action="{{ route('employee.store') }}" enctype="multipart/form-data" method="post"> --}}
                     <form enctype="multipart/form-data"  wire:submit.prevent="updateEmployee" class="space-y-6" >
                             @csrf
