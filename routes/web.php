@@ -15,9 +15,9 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('login');
-// });
+Route::get('/', function () {
+    return view('welc');
+});
 
 //Route::get('/employees', 'HomeController@index')->name('employees');
 // Route::get('/employee/{id}', 'HomeController@show')->name('employee.show');
@@ -57,7 +57,7 @@ Route::middleware([
     Route::get('/employees/equipe', 'HomeController@showEquipe')->name('Equipe');
     Route::get('/employee/profile/{id}', 'HomeController@show')->name('profile');
 
-    Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.redirect');
+    // Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.redirect');
 
 });
 

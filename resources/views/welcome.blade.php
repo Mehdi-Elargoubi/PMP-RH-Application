@@ -31,9 +31,7 @@
 
     <div class="row mt-4">
         <div class="col-md-8">
-            <h1> hello from Welcome page</h1>
-            <h2> hello from Welcome page</h2>
-            <h3> hello from Welcome page</h3>
+            <h1>Welcome page</h1>
         </div>
     </div>
 @endsection
