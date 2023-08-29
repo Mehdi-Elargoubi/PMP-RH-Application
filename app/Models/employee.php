@@ -13,6 +13,7 @@ class employee extends Model
     protected $fillable = ['name','matr','jobP','jobR','observ','equipe','image'];
 
     public function absences(): HasMany {
+
         return $this->hasMany(Absence::class);
     }
 }
